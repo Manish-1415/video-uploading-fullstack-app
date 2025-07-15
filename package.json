@@ -1,0 +1,23 @@
+{
+  "name": "video-uploading-fullstack-app",
+  "version": "1.0.0",
+  "description": "This is youtube looklike fullstack application",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Manish-1415/video-uploading-fullstack-app.git"
+  },
+  "author": "Manish Shinde",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Manish-1415/video-uploading-fullstack-app/issues"
+  },
+  "homepage": "https://github.com/Manish-1415/video-uploading-fullstack-app#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
