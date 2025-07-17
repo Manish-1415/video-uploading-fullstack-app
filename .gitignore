@@ -1,2 +1,6 @@
+# avoiding node_modules from getting pushed inside git repo
 node_modules/
-.env/
+
+
+.env 
+# Here we simply avoiding .env from getting set into git repo.......

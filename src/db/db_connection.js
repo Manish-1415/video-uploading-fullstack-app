@@ -9,13 +9,14 @@ const connectDB = async () => {
       `${process.env.MONGODB_URL}/${DB_NAME}`
     );
 
-    console.log("Checking our mongoDB URL :", process.env.MONGODB_URL);
+    // console.log("Checking our mongoDB URL :", process.env.MONGODB_URL);
 
     console.log(
       `\nMongoDB Database Connected!!  DB Host : ${connectionInstance.connection.host}`
     );
   } catch (error) {
     console.log("MongoDB connection Error :", error);
+    process.exit(1)  // this process.exit(1) simply means whenever we face errors then u should have to stop the server.
   }
 };
 
