@@ -3,7 +3,7 @@ import { ApiError } from "../utils/ApiError.js";
 import { User } from "../models/user.models.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
-import { use } from "react";
+
 
 const registerUser = asyncHandler(async (req, res) => {
   // Here now we are writitng for Controller function , what this function do , it runs by route we provide reference there
@@ -18,7 +18,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
   // Validate the fields , checking if they are available / they are not empty if yes throw error
   for (const field of inpFromUser) {
-    if(!field || field.trim() !== "" ) throw new ApiError(409 , "All fiedls are required");
+    if(!field || field.trim() !== "" ) throw new ApiError(409 , "All fields are required (this err from fields)");
   }
 
   // Check if user already exist
@@ -61,6 +61,7 @@ const registerUser = asyncHandler(async (req, res) => {
     coverImage : coverImageUrl?.path || ""
   })
 
+  console.log(user);
 
   const checkIfUserCreated = User.findById(user._id).select( "-password -refreshToken" );
 

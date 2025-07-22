@@ -34,7 +34,6 @@ const userSchema = Schema(
 
     coverImage: {
       type: String, // using cloudnarry
-      required: true,
     },
 
     watchHistory: [
