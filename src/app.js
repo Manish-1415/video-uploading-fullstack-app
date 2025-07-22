@@ -24,7 +24,8 @@ app.use(cookieParser()); // it allow to perform CRUD operations in users Browser
 
 import userRouter from "./routes/user.route.js";
 
-app.use("/api/v1/users", userRouter);
+
+app.use("/api/v1/users" , userRouter);
 
 
 

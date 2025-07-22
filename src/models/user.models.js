@@ -64,39 +64,37 @@ userSchema.pre("save", async function (next) {
   next();
 });
 
+userSchema.methods.comparePassword = async function (password) {
+  return await bcrypt.compare(password, this.password);
+};
 
-userSchema.methods.comparePassword = async function(password) {
-   return await bcrypt.compare(password, this.password )
-}
+userSchema.methods.generateAccessToken = function () {
+  jwt.sign(
+    {
+      _id: this._id,
+      email: this.email,
+      fullName: this.fullName,
+    },
+    // Here we need our access token's secret key
+    process.env.ACCESS_TOKEN_SECRET,
+    {
+      // and also set the deadline inside object
+      expiresIn: process.env.ACCESS_TOKEN_EXPIRY,
+    }
+  );
+};
 
-userSchema.methods.generateAccessToken = function() {
-    jwt.sign(
-        {
-            _id: this._id,                                            
-            email: this.email,
-            fullName: this.fullName
-        },
-        // Here we need our access token's secret key 
-        process.env.ACCESS_TOKEN_SECRET ,
-        {
-            // and also set the deadline inside object
-            expiresIn: process.env.ACCESS_TOKEN_EXPIRY
-        }
-    )
-}
-
-
-userSchema.methods.generateRefreshToken = function() {
-    jwt.sign(
-        {
-            _id: this._id                                           
-        },
-        // Here we need our refresh token's secret key
-        process.env.REFRESH_TOKEN_SECRET ,
-        {
-            expiresIn: process.env.REFRESH_TOKEN_EXPIRY
-        }
-    )
-}
+userSchema.methods.generateRefreshToken = function () {
+  jwt.sign(
+    {
+      _id: this._id,
+    },
+    // Here we need our refresh token's secret key
+    process.env.REFRESH_TOKEN_SECRET,
+    {
+      expiresIn: process.env.REFRESH_TOKEN_EXPIRY,
+    }
+  );
+};
 
 export const User = new model("User", userSchema);
