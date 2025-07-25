@@ -8,12 +8,12 @@ const app = express();
 
 app.use(
   cors({
-    origin: process.env.CORS_ORIGIN,
+    origin: process.env.CORS_ORIGIN,  // In production grade we write our domain name here.
     credentials: true,
   })
 );
 
-app.use(urlencoded({ extended: true }));
+app.use(urlencoded({ extended: true }));  // It allows to get data in object form 
 app.use(express.json()); // it allows to the request to send data in objects
 app.use(express.static("public")); // it allows to store temporary files like , images,pdf, etc.
 app.use(cookieParser()); // it allow to perform CRUD operations in users Browser..
